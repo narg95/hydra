@@ -22,6 +22,7 @@ package consent
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -190,7 +191,7 @@ func (s *DefaultStrategy) getIDTokenHintClaims(ctx context.Context, idTokenHint 
 	} else if err != nil {
 		return nil, errorsx.WithStack(fosite.ErrInvalidRequest.WithHint(err.Error()))
 	}
-
+	fmt.Printf("TOKEN: %+v: \n ERR: %+v\n", token, err)
 	return token.Claims, nil
 }
 
